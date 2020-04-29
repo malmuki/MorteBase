@@ -111,3 +111,6 @@ STATIC_URL = '/static/'
 
 # Activate django-heroku
 django_heroku.settings(locals())
+
+# Authentication
+LOGIN_REDIRECT_URL = '/'

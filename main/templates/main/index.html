@@ -1,5 +1,11 @@
 {% extends 'main/inc/_base.html' %}
 
 {% block content %}
+
+{% if user.is_authenticated %}
+  <p>Bonjour {{ user.username }}</p>
+{% endif %}
+
 <h1>La Mortebase</h1>
+
 {% endblock %}

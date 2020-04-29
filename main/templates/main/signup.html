@@ -1,0 +1,14 @@
+{% extends 'main/inc/_base.html' %}
+
+{% block content %}
+
+<form method="post">
+  {% csrf_token %}
+  <table>
+    {{ form }}
+  </table>
+
+  <input type="submit" value="Créer un compte" />
+</form>
+
+{% endblock %}
