@@ -1,3 +1,6 @@
 django
 django-heroku
+django-sass
+django-webpack-loader
 gunicorn
+libsass
