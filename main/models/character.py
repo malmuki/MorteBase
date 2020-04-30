@@ -23,7 +23,7 @@ class Character(models.Model):
     # Ensure there are 3 skill trees at all time,
     # otherwise reinitialize it
     skill_tree_count = CharacterSkillTree.objects.filter(character=self).count()
-    if skill_tree_count != CHARACTER_SKILL_TREE_COUNT:
+    if skill_tree_count < CHARACTER_SKILL_TREE_COUNT:
       for i in range(CHARACTER_SKILL_TREE_COUNT):
         character_skill_tree = CharacterSkillTree(character=self, skill_tree=None)
         character_skill_tree.save()
