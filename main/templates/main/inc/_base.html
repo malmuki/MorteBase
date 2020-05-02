@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +14,36 @@
 
 <body>
   <div id="mb" class="mb">
+
+    {# Nav #}
+    <nav class="mb-nav">
+      <a href="{% url 'main:index' %}"><img class="mb-logo" src="{% static 'main/img/logo.png' %}" alt="Logo Morte-Flamme" /></a>
+
+      <ul class="mb-nav-menu list-group">
+        <li class="list-group-item">
+          <button data-toggle="collapse" data-target="#mb-nav-skill-trees">Système</button>
+          <ul id="mb-nav-skill-trees" class="list-group collapse">
+            <li class="list-group-item"><a href="#">À venir</a></li>
+          </ul>
+        </li>
+        <li class="list-group-item">
+          <button data-toggle="collapse" data-target="#mb-nav-characters">Mes personnages</button>
+          <ul id="mb-nav-characters" class="list-group collapse show">
+            <li class="list-group-item"><a href="#">À venir</a></li>
+            <li class="list-group-item mb-nav-create-character"><a href="#">Créer un nouveau personnage</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="mb-user-panel">
+        {% if user.is_authenticated %}
+          {{ user.username }} | <a href="{% url 'main:logout' %}">Déconnexion</a>
+        {% else %}
+          <a href="{% url 'main:login' %}">Connexion</a> | <a href="{% url 'main:signup' %}">Inscription</a>
+        {% endif %}
+      </div>
+    </nav>
+
     {% block content %}{% endblock %}
   </div>
 

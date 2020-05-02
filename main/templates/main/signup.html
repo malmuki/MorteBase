@@ -1,14 +1,26 @@
 {% extends 'main/inc/_base.html' %}
 
+{% load render_bundle from webpack_loader %}
+
+{% block css %}
+{% render_bundle 'index' 'css' %}
+{% endblock %}
+
+{% block js %}
+{% render_bundle 'index' 'js' %}
+{% endblock %}
+
 {% block content %}
+<div class="mb-content mb-signup">
+  <h1>Inscription</h1>
 
-<form method="post">
-  {% csrf_token %}
-  <table>
-    {{ form }}
-  </table>
+  <form method="post">
+    {% csrf_token %}
+    <table>
+      {{ form }}
+    </table>
 
-  <input type="submit" value="Créer un compte" />
-</form>
-
+    <input type="submit" value="Créer un compte" />
+  </form>
+</div>
 {% endblock %}

@@ -1,5 +1,50 @@
+@import 'inc/colors';
+
 .mb {
+  display: flex;
   min-height: 100vh;
-  color: darken(white, 5%);
-  background-color: #121212;
+  color: $main-text-color;
+  background-image: url('/static/main/img/bg.png');
+}
+
+.mb-nav {
+  width: 400px;
+  background-color: $main-bg-color;
+  border-right: 1px solid $main-border-color;
+  display: flex;
+  flex-direction: column;
+
+  .mb-logo {
+    width: 100%;
+  }
+
+  .mb-nav-menu {
+    flex: 1;
+
+    .mb-nav-create-character {
+      background-color: $button-bg-color;
+    }
+  }
+
+  .list-group-item {
+    background-color: transparent;
+  }
+
+  .mb-user-panel {
+    text-align: center;
+    margin: 2em 0;
+  }
+
+  button {
+    width: 100%;
+    color: $main-text-color;
+    background-color: lighten($main-bg-color, 5%);
+    border: none;
+    border-bottom: 1px solid $main-border-color;
+    padding: 0.5em 0em;
+  }
+}
+
+.mb-content {
+  padding: 1em;
 }
