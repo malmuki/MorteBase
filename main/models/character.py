@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-from .skill_tree import SkillTree
+from .skill_tree import SkillTree, SkillTreeSkill
 
 CHARACTER_SKILL_TREE_COUNT = 3
 
@@ -11,6 +11,7 @@ class Character(models.Model):
   owner = models.ForeignKey(User, on_delete=models.CASCADE)
   creation_date = models.DateTimeField(auto_now_add=True)
   skill_trees = models.ManyToManyField(SkillTree, through='CharacterSkillTree')
+  currentXP = models.IntegerField()
 
   def save(self, *args, **kwargs):
     saved_already = False
@@ -43,3 +44,10 @@ class CharacterSkillTree(models.Model):
 
   def __str__(self):
     return str(self.skill_tree)
+
+class CharacterSkillTreeSkill(models.Model):
+  CharacterSkillTree = models.ForeignKey(CharacterSkillTree, on_delete=models.CASCADE)
+  skill = models.ForeignKey(SkillTreeSkill, null=True, on_delete=models.SET_NULL)
+
+  def __str__(self):
+    return str(self.skill)
