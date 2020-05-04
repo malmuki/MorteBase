@@ -7,5 +7,5 @@ class LoginView(LoginView):
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
-    context['skill_trees'] = SkillTree.objects.all()
+    context['nav_skill_trees'] = SkillTree.objects.all()
     return context

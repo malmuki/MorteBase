@@ -8,11 +8,11 @@ from .views.skillTree import SkillTreeListView
 
 app_name = 'main'
 urlpatterns = [
+    path('branches/', SkillTreeListView.as_view(), name='branches'),
     path('connexion/', LoginView.as_view(), name='login'),
     path('deconnexion/', auth_views.LogoutView.as_view(), name='logout'),
     path('inscription/', SignupView.as_view(), name='signup'),
     path('mdp_oubli/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-    path('branches/', SkillTreeListView.as_view(), name='branches'),
     #path('competences/', SkillTreeListView.as_view(), name='competences'),
     path('', IndexView.as_view(), name='index')
 ]
