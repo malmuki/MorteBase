@@ -1,0 +1,24 @@
+{% extends 'main/inc/_base.html' %}
+
+{% load render_bundle from webpack_loader %}
+
+{% block css %}
+{% render_bundle 'index' 'css' %}
+{% endblock %}
+
+{% block js %}
+{% render_bundle 'index' 'js' %}
+{% endblock %}
+
+{% block content %}
+<div class="mb-content">
+  <h1>Les Branches</h1>
+  <table>
+    {% for tree in object_list %}
+      {% cycle '<tr>' '' '' '' %}
+        <td>{{tree.name}}</td>
+      {% cycle '' '' '' '</tr>' %}
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

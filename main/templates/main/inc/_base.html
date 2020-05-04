@@ -21,10 +21,13 @@
 
       <ul class="mb-nav-menu list-group">
         <li class="list-group-item">
-          <button data-toggle="collapse" data-target="#mb-nav-skill-trees">Système</button>
+          <button data-toggle="collapse" data-target="#mb-nav-skill-trees">
+            Système
+            <a class="btn btn-default" href="{% url 'main:branches' %}">Toutes</a>
+          </button>
           <ul id="mb-nav-skill-trees" class="list-group collapse">
             {% for skill_tree in skill_trees %}
-              <li class="list-group-item"><a href="/branche/{{ skill_tree.slug }}/">{{ skill_tree.name }}</a></li>
+              <li class="list-group-item"><a href="/branches/{{ skill_tree.slug }}/">{{ skill_tree.name }}</a></li>
             {% endfor %}
           </ul>
         </li>

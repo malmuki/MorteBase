@@ -12,6 +12,8 @@ class Character(models.Model):
   creation_date = models.DateTimeField(auto_now_add=True)
   skill_trees = models.ManyToManyField(SkillTree, through='CharacterSkillTree')
   currentXP = models.IntegerField(default=5)
+  isDead = models.BooleanField(default=False)
+  armureMax = models.IntegerField(default=0)
 
   def save(self, *args, **kwargs):
     saved_already = False
@@ -26,7 +28,7 @@ class Character(models.Model):
     skill_tree_count = CharacterSkillTree.objects.filter(character=self).count()
     if skill_tree_count < CHARACTER_SKILL_TREE_COUNT:
       for i in range(CHARACTER_SKILL_TREE_COUNT):
-        character_skill_tree = CharacterSkillTree(character=self, skill_tree=None)
+        character_skill_tree = CharacterSkillTree(character=self, skillTree=None)
         character_skill_tree.save()
       super().save(*args, **kwargs) # Resave
       saved_already = True
@@ -38,12 +40,30 @@ class Character(models.Model):
   def __str__(self):
     return self.name
 
+  def GetMaxHp(self):
+    total = 5
+    treeSet = CharacterSkillTree.objects.filter(character=self, countForHP=True)
+    for tree in treeSet:
+      total += tree.GetHpForTree()
+    return total
+
+  def GetMaxStamina(self):
+    return 5
+
 class CharacterSkillTree(models.Model):
   character = models.ForeignKey(Character, on_delete=models.CASCADE)
-  skill_tree = models.ForeignKey(SkillTree, blank=True, null=True, on_delete=models.SET_NULL)
+  skillTree = models.ForeignKey(SkillTree, blank=True, null=True, on_delete=models.SET_NULL)
+  countForHP = models.BooleanField(default=True)
 
   def __str__(self):
-    return str(self.skill_tree)
+    return str(self.skillTree)
+
+  def GetHpForTree(self):
+    hpGrid = SkillTree.objects.get(self.skillTree).GetHPGridPerAttribute()
+    return hpGrid[self.GetTierForTree()]
+
+  def GetTierForTree(self):
+    return 1
 
 class CharacterSkillTreeSkill(models.Model):
   CharacterSkillTree = models.ForeignKey(CharacterSkillTree, on_delete=models.CASCADE)
