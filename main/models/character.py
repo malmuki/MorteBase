@@ -13,7 +13,7 @@ class Character(models.Model):
   skill_trees = models.ManyToManyField(SkillTree, through='CharacterSkillTree')
   currentXP = models.IntegerField(default=5)
   isDead = models.BooleanField(default=False)
-  armureMax = models.IntegerField(blank=True)
+  armureMax = models.IntegerField(default=0)
 
   def save(self, *args, **kwargs):
     saved_already = False
