@@ -11,7 +11,7 @@ class Character(models.Model):
   owner = models.ForeignKey(User, on_delete=models.CASCADE)
   creation_date = models.DateTimeField(auto_now_add=True)
   skill_trees = models.ManyToManyField(SkillTree, through='CharacterSkillTree')
-  currentXP = models.IntegerField()
+  currentXP = models.IntegerField(default=5)
   isDead = models.BooleanField(default=False)
   armureMax = models.IntegerField(blank=True)
 
