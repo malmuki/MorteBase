@@ -19,6 +19,9 @@ class SkillTree(models.Model):
   ]
   attribut = models.CharField(max_length=3, choices=ATTRIBUT, blank=True, default=PHYSIQUE)
 
+  #SIMPLEWEAPON
+  #equipement = 
+
   def __str__(self):
     return self.name
 
