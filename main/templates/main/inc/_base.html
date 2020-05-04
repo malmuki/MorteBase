@@ -23,7 +23,9 @@
         <li class="list-group-item">
           <button data-toggle="collapse" data-target="#mb-nav-skill-trees">Système</button>
           <ul id="mb-nav-skill-trees" class="list-group collapse">
-            <li class="list-group-item"><a href="#">À venir</a></li>
+            {% for skill_tree in skill_trees %}
+              <li class="list-group-item"><a href="/branche/{{ skill_tree.slug }}/">{{ skill_tree.name }}</a></li>
+            {% endfor %}
           </ul>
         </li>
         <li class="list-group-item">
