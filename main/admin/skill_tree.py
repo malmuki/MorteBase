@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from main.models.skill_tree import SkillTree, SkillTreeSkill
+from main.models.skill_tree import SkillTree, SkillTreeSkill, Equipement
 
 class SkillTreeSkillInline(admin.TabularInline):
   model = SkillTreeSkill
@@ -21,3 +21,4 @@ class SkillTreeAdmin(admin.ModelAdmin):
   col_skill.short_description = 'Skill'
 
 admin.site.register(SkillTree, SkillTreeAdmin)
+admin.site.register(Equipement)

@@ -2,6 +2,32 @@ from django.db import models
 
 from .skill import Skill
 
+class Equipement(models.Model):
+  SIMPLEWEAPON = "ARS"
+  COMBATWEAPON = "ARC"
+  WARWEAPON = "ARG"
+  THROWNWEAPON = "ARS"
+  RANGEWEAPON = "ARD"
+  LIGHTARMOR = "ALE"
+  HEAVYARMOR = "ALO"
+  LIGHTSHIELD = "PBO"
+  GREATSHIELD = "GBO"
+  EQUIPEMENT = [
+    (SIMPLEWEAPON, "Maniement des armes simples"),
+    (COMBATWEAPON, "Maniement des armes de combat"),
+    (WARWEAPON, "Maniement des armes de guerre"),
+    (THROWNWEAPON, "Maniement des armes de jet"),
+    (RANGEWEAPON, "Maniement des armes à distance"),
+    (LIGHTARMOR, "Port d'armure légère"),
+    (HEAVYARMOR, "Port d'armure lourde"),
+    (LIGHTSHIELD, "Port des petits boucliers"),
+    (GREATSHIELD, "Port des grands boucliers"),
+  ]
+  equipement = models.CharField(max_length=3, choices=EQUIPEMENT, blank=True, default=SIMPLEWEAPON)
+
+  def __str__(self):
+    return str(self.equipement)
+
 class SkillTree(models.Model):
   name = models.CharField(max_length=128, default='')
   slug = models.CharField(max_length=128, default='')
@@ -18,9 +44,7 @@ class SkillTree(models.Model):
     (INFLUENCE, "Influence"),
   ]
   attribut = models.CharField(max_length=3, choices=ATTRIBUT, blank=True, default=PHYSIQUE)
-
-  #SIMPLEWEAPON
-  #equipement = 
+  equipement = models.ManyToManyField(Equipement)
 
   def __str__(self):
     return self.name
