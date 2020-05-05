@@ -61,7 +61,7 @@ class SkillTree(models.Model):
 class SkillTreeSkill(models.Model):
   skillTree = models.ForeignKey(SkillTree, null=True, on_delete=models.CASCADE)
   skill = models.ForeignKey(Skill, null=True, on_delete=models.SET_NULL)
-  requirements = models.ManyToManyField("self")
+  requirements = models.ManyToManyField("self", blank=True)
   tier = models.PositiveSmallIntegerField(default=0)
 
   def __str__(self):

@@ -22,3 +22,4 @@ class SkillTreeAdmin(admin.ModelAdmin):
 
 admin.site.register(SkillTree, SkillTreeAdmin)
 admin.site.register(Equipement)
+admin.site.register(SkillTreeSkill)
