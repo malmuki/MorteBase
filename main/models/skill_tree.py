@@ -65,4 +65,4 @@ class SkillTreeSkill(models.Model):
   tier = models.PositiveSmallIntegerField(default=0)
 
   def __str__(self):
-    return str(self.skillTree)
+    return str(self.skillTree)  + "/" + str(self.skill)
