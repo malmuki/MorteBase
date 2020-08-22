@@ -32,10 +32,14 @@
           </ul>
         </li>
         <li class="list-group-item">
-          <button data-toggle="collapse" data-target="#mb-nav-characters">Mes personnages</button>
-          <ul id="mb-nav-characters" class="list-group collapse show">
-            <li class="list-group-item"><a href="#">À venir</a></li>
-            <li class="list-group-item mb-nav-create-character"><a href="#">Créer un nouveau personnage</a></li>
+          <button data-toggle="collapse" data-target="#mb-nav-competences">
+            <a class="mb-nav-skill-trees-all btn btn-sm btn-outline-secondary" href="{% url 'main:competences' %}">Toutes</a>
+            Les compétences
+          </button>
+          <ul id="mb-nav-competences" class="list-group collapse">
+            {% for skill in nav_skills %}
+            <li class="list-group-item"><a href="/branches/{{ skill.slug }}/">{{ skill.name }}</a></li>
+            {% endfor %}
           </ul>
         </li>
       </ul>

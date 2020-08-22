@@ -1,10 +1,10 @@
-from django.contrib.auth.views import LoginView
+from django.views.generic.list import ListView
 
 from main.models.skill import Skill
 from main.models.skill_tree import SkillTree
 
-class LoginView(LoginView):
-  template_name = 'main/login.html'
+class SkillsListView(ListView):
+  model = Skill
 
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)

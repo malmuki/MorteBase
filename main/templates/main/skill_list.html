@@ -1,0 +1,28 @@
+{% extends 'main/inc/_base.html' %}
+
+{% load render_bundle from webpack_loader %}
+
+{% block css %}
+{% render_bundle 'index' 'css' %}
+{% endblock %}
+
+{% block js %}
+{% render_bundle 'index' 'js' %}
+{% endblock %}
+
+{% block content %}
+<div class="mb-content">
+  <h1>Les Skills</h1>
+  <table class="list-group">
+    {% for skill in object_list %}
+      <tr class="list-group-item">
+        <td>
+          <button data-toggle="collapse" data-target="#competences-{{skill.slug}}" class="btn btn-sm btn-outline-secondary">{{skill.name}}</button>
+          <div id="competences-{{skill.slug}}" class="collapse">{{skill.description}}</div>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+    
+</div>
+{% endblock %}

@@ -5,6 +5,7 @@ from .views.index import IndexView
 from .views.login import LoginView
 from .views.signup import SignupView
 from .views.skillTree import SkillTreeListView
+from .views.skills import SkillsListView
 
 app_name = 'main'
 urlpatterns = [
@@ -13,6 +14,6 @@ urlpatterns = [
     path('deconnexion/', auth_views.LogoutView.as_view(), name='logout'),
     path('inscription/', SignupView.as_view(), name='signup'),
     path('mdp_oubli/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-    #path('competences/', SkillTreeListView.as_view(), name='competences'),
+    path('competences/', SkillsListView.as_view(), name='competences'),
     path('', IndexView.as_view(), name='index')
 ]
