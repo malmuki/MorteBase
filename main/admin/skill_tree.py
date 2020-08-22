@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from main.models.skill_tree import SkillTree, SkillTreeSkill
+from main.models.skill_tree import SkillTree, SkillTreeSkill, Equipement
 
 class SkillTreeSkillInline(admin.TabularInline):
   model = SkillTreeSkill
@@ -9,6 +9,7 @@ class SkillTreeSkillInline(admin.TabularInline):
 
 class SkillTreeAdmin(admin.ModelAdmin):
   list_display = ('name', 'col_skill')
+  prepopulated_fields = {'slug': ['name']}
   inlines = [SkillTreeSkillInline]
 
   # Custom columns
@@ -20,3 +21,5 @@ class SkillTreeAdmin(admin.ModelAdmin):
   col_skill.short_description = 'Skill'
 
 admin.site.register(SkillTree, SkillTreeAdmin)
+admin.site.register(Equipement)
+admin.site.register(SkillTreeSkill)

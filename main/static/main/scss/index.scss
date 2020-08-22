@@ -21,13 +21,17 @@
   .mb-nav-menu {
     flex: 1;
 
+    .mb-nav-skill-trees-all {
+      position: absolute;
+      right: 2em;
+      margin-right: 1em;
+      font-size: 0.6em;
+    }
+
     .mb-nav-create-character {
       background-color: $button-bg-color;
     }
-  }
 
-  .list-group-item {
-    background-color: transparent;
   }
 
   .mb-user-panel {
@@ -47,4 +51,33 @@
 
 .mb-content {
   padding: 1em;
+}
+
+.list-group-item {
+  position: relative;
+  background-color: transparent;
+}
+
+.tooltip {
+  position: relative;
+  display: inline;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 300px;
+  background-color: #fff;
+  color: black;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 105%;
 }
