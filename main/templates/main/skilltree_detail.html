@@ -1,0 +1,30 @@
+{% extends 'main/inc/_base.html' %}
+
+{% load render_bundle from webpack_loader %}
+
+{% block css %}
+{% render_bundle 'index' 'css' %}
+{% endblock %}
+
+{% block js %}
+{% render_bundle 'index' 'js' %}
+{% endblock %}
+
+{% block content %}
+<div class="mb-content">
+  <h1>{{skilltree.name}}</h1> 
+  <div>
+    Attribut: {{skilltree.GetAttibutFullName}}
+  </div>
+  <div>Restriction:
+    {% if skilltree.restriction.all.count > 0 %}
+    {% for restriction in skilltree.restriction.all %}
+    {{restriction.name}}
+    {% endfor %}
+    {% else %}
+    Aucune
+    {% endif %}
+  </div>
+  {{skilltree.description}}
+</div>
+{% endblock %}

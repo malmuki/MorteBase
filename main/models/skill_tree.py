@@ -57,6 +57,10 @@ class SkillTree(models.Model):
     else:
       return (1,2,3)
 
+  def GetAttibutFullName(self):
+    di = dict(self.ATTRIBUT)
+    return di[self.attribut]
+
 
 class SkillTreeSkill(models.Model):
   skillTree = models.ForeignKey(SkillTree, null=True, on_delete=models.CASCADE)
