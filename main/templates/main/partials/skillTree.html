@@ -1,0 +1,38 @@
+{% load render_bundle from webpack_loader %}
+
+{% block css %}
+{% render_bundle 'skillTree' 'css' %}
+{% endblock %}
+
+{% block js %}
+{% render_bundle 'skillTree' 'js' %}
+{% endblock %}
+
+{% block content %}
+<div class="hv-wrapper">
+  <!-- Key component -->
+  <div class="hv-item">
+    <div class="hv-item-parent">
+      <p> Parent </p>
+    </div>
+    <div class="hv-item-children">
+      <div class="hv-item-child">
+        <!-- Key component -->
+        <div class="hv-item">
+          <div class="hv-item-parent">
+            <p> Parent </p>
+          </div>
+          <div class="hv-item-children">
+            <div class="hv-item-child">
+              <p> Child 1 </p>
+            </div>
+            <div class="hv-item-child">
+              <p> Child 2 </p>
+            </div>
+            <div class="hv-item-child">
+              <p> Child 2 </p>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}

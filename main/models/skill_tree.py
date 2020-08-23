@@ -28,6 +28,10 @@ class Equipement(models.Model):
   def __str__(self):
     return str(self.equipement)
 
+  def GetFullName(self):
+    di = dict(self.EQUIPEMENT)
+    return di[self.equipement]
+
 class SkillTree(models.Model):
   name = models.CharField(max_length=128, default='')
   slug = models.CharField(max_length=128, default='')

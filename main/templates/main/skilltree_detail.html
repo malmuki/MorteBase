@@ -26,5 +26,7 @@
     {% endif %}
   </div>
   {{skilltree.description}}
+
+  {% include 'main/partials/skillTree.html' with skillTree=skillTree %}
 </div>
 {% endblock %}
