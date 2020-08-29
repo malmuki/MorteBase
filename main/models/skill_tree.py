@@ -32,12 +32,21 @@ class Equipement(models.Model):
     di = dict(self.EQUIPEMENT)
     return di[self.equipement]
 
+class SkillTreeSkill(models.Model):
+  skillTree = models.ForeignKey("SkillTree", null=True, on_delete=models.CASCADE)
+  skill = models.ForeignKey(Skill, null=True, on_delete=models.SET_NULL)
+  requirements = models.ForeignKey("self", blank=True, null=True, on_delete=models.SET_NULL)
+  tier = models.PositiveSmallIntegerField(default=0)
+
+  def __str__(self):
+    return str(self.skillTree)  + "/" + str(self.skill)
+
 class SkillTree(models.Model):
   name = models.CharField(max_length=128, default='')
   slug = models.CharField(max_length=128, default='')
   description = models.TextField(default='', blank=True)
   restriction = models.ManyToManyField("self", blank=True)
-  skill = models.ManyToManyField(Skill, blank=True, through='SkillTreeSkill')
+  skill = models.ForeignKey(SkillTreeSkill, blank=True, null=True, on_delete=models.SET_NULL)
 
   PHYSIQUE = "PHY"
   ESPRIT = "ESP"
@@ -64,13 +73,3 @@ class SkillTree(models.Model):
   def GetAttibutFullName(self):
     di = dict(self.ATTRIBUT)
     return di[self.attribut]
-
-
-class SkillTreeSkill(models.Model):
-  skillTree = models.ForeignKey(SkillTree, null=True, on_delete=models.CASCADE)
-  skill = models.ForeignKey(Skill, null=True, on_delete=models.SET_NULL)
-  requirements = models.ForeignKey("self", blank=True, null=True, on_delete=models.SET_NULL)
-  tier = models.PositiveSmallIntegerField(default=0)
-
-  def __str__(self):
-    return str(self.skillTree)  + "/" + str(self.skill)

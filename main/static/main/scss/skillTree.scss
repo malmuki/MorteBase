@@ -5,6 +5,16 @@ $line-width: 2px;
 $line-color: rgba(#FFF, 0.7);
 $bg-color: #EFE6E2;
 
+p.treenode{
+  margin: 0;
+  background-color: #fff;
+  color: #DE5454;
+  padding: 30px;
+  border-radius: 7px;
+  min-width: 70px;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(#CC8367, 0.22);
+}
 
 .hv-wrapper{
   display: flex;
@@ -57,6 +67,11 @@ $bg-color: #EFE6E2;
           transform: translateY(-100%);
           height: $line-width;
           width: 100%;
+        }
+
+        &:after:not(:only-child){
+          left: 0%;
+          width: 0%;
         }
         
         &:first-child:after{
