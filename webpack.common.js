@@ -1,6 +1,7 @@
 module.exports = {
   entry: {
-    index: './main/static/main/js/index.js'
+    index: './main/static/main/js/index.js',
+    skillTree: './main/static/main/js/skillTree.js'
   },
   module: {
     rules: [

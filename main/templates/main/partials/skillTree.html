@@ -1,0 +1,24 @@
+{% load render_bundle from webpack_loader %}
+
+{% block css %}
+{% render_bundle 'skillTree' 'css' %}
+{% endblock %}
+
+{% block js %}
+{% render_bundle 'skillTree' 'js' %}
+{% endblock %}
+
+{% block content %}
+<div class="hv-wrapper">
+  <div class="hv-item">
+    <div class="hv-item-parent">
+      <p class="treenode" title="{{skillTree.skill.skill.description}}"> {{skillTree.skill.skill.name}} </p>
+    </div>
+    <div class="hv-item-children">
+      {% for skill in skillTree.skill.GetLinkedSkills %}
+        {% include 'main/partials/skillTree_node.html' with skillTreeSkill=skill %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

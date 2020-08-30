@@ -19,7 +19,7 @@
         <td>
           <button data-toggle="collapse" data-target="#competences-{{skill.slug}}" class="btn btn-sm btn-outline-primary">{{skill.name}}</button>
           <a class="btn btn-sm btn-outline-secondary" href="{{skill.slug}}">Detail</a>
-          <div id="competences-{{skill.slug}}" class="collapse">{{skill.description}}</div>  
+          <div id="competences-{{skill.slug}}" class="collapse">{{skill.description|linebreaks}}</div>  
         </td>
       </tr>
     {% endfor %}

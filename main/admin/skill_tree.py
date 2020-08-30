@@ -8,7 +8,6 @@ class SkillTreeSkillInline(admin.TabularInline):
   extra = 0
 
 class SkillTreeAdmin(admin.ModelAdmin):
-  list_display = ('name', 'col_skill')
   prepopulated_fields = {'slug': ['name']}
   inlines = [SkillTreeSkillInline]
 
