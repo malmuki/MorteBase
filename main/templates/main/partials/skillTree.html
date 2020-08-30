@@ -10,100 +10,15 @@
 
 {% block content %}
 <div class="hv-wrapper">
-
   <div class="hv-item">
-
     <div class="hv-item-parent">
-      <p class="treenode"> Armurier </p>
+      <p class="treenode" title="{{skillTree.skill.skill.description}}"> {{skillTree.skill.skill.name}} </p>
     </div>
-
     <div class="hv-item-children">
-
-      <div class="hv-item-child">
-        <div class="hv-item">
-
-          <div class="hv-item-parent">
-            <p class="treenode"> Provocation </p>
-          </div>
-
-          <div class="hv-item-children">
-
-            <div class="hv-item-child">
-              <div class="hv-item">
-
-                <div class="hv-item-parent">
-                  <p class="treenode"> Prévoyance </p>
-                </div>
-      
-                <div class="hv-item-children">
-      
-                  <div class="hv-item-child">
-                    <p class="treenode"> Menace </p>
-                  </div>
-                </div>
-      
-              </div>
-            </div>
-
-            <div class="hv-item-child">
-              <div class="hv-item">
-
-                <div class="hv-item-parent">
-                  <p class="treenode"> Insulte fatale </p>
-                </div>
-      
-                <div class="hv-item-children">
-      
-                  <div class="hv-item-child">
-                    <p class="treenode"> Invective </p>
-                  </div>
-                </div>
-      
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-
-      <div class="hv-item-child">
-        <div class="hv-item">
-
-          <div class="hv-item-parent">
-            <p class="treenode"> Obstination </p>
-          </div>
-
-          <div class="hv-item-children">
-
-            <div class="hv-item-child">
-              <div class="hv-item">
-
-                <div class="hv-item-parent">
-                  <p class="treenode"> Ignorance </p>
-                </div>
-      
-                <div class="hv-item-children">
-      
-                  <div class="hv-item-child">
-                    <p class="treenode"> Second souffle </p>
-                  </div>
-                </div>
-      
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="hv-item-child">
-        <p class="treenode"> Porte de fer </p>
-      </div>
-
+      {% for skill in skillTree.skill.GetLinkedSkills %}
+        {% include 'main/partials/skillTree_node.html' with skillTreeSkill=skill %}
+      {% endfor %}
     </div>
-
   </div>
-
 </div>
 {% endblock %}

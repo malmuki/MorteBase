@@ -1,0 +1,18 @@
+{% block content %}
+<div class="hv-item-child">
+  <div class="hv-item">
+    {% if skill.GetLinkedSkills.all %}
+    <div class="hv-item-parent">
+      <p class="treenode" title="{{skillTreeSkill.skill.description}}"> {{skillTreeSkill.skill.name}} </p>
+    </div>
+    <div class="hv-item-children">
+      {% for skill in skill.GetLinkedSkills %}
+        {% include 'main/partials/skillTree_node.html' with skillTreeSkill=skill %}
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="treenode" title="{{skillTreeSkill.skill.description}}"> {{skillTreeSkill.skill.name}} </p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -69,7 +69,7 @@ p.treenode{
           width: 100%;
         }
 
-        &:after:not(:only-child){
+        &:after:not(:only-of-type){
           left: 0%;
           width: 0%;
         }

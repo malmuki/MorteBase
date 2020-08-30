@@ -41,6 +41,9 @@ class SkillTreeSkill(models.Model):
   def __str__(self):
     return str(self.skillTree)  + "/" + str(self.skill)
 
+  def GetLinkedSkills(self):
+    return SkillTreeSkill.objects.filter(requirements=self.id)
+
 class SkillTree(models.Model):
   name = models.CharField(max_length=128, default='')
   slug = models.CharField(max_length=128, default='')
