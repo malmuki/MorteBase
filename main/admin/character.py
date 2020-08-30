@@ -4,7 +4,6 @@ from main.models.character import Character, CharacterSkillTree
 
 class CharacterSkillTreeInline(admin.TabularInline):
   model = CharacterSkillTree
-  fields = ['skill_tree']
   extra = 0
 
 class CharacterAdmin(admin.ModelAdmin):

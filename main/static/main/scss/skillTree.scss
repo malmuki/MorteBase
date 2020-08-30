@@ -62,16 +62,11 @@ p.treenode{
           
         }
         
-        &:after{
+        &:not(:only-of-type):after{
           top: -$bottom-margin / 2;
           transform: translateY(-100%);
           height: $line-width;
           width: 100%;
-        }
-
-        &:after:not(:only-of-type){
-          left: 0%;
-          width: 0%;
         }
         
         &:first-child:after{
